@@ -1,0 +1,25 @@
+$$ factorial
+.push /r /q
+
+.block {
+  .catch {
+    .if 0 == ${/d:$arg1} {
+      .printf "Usage: $$>a<factorial.wds <number>\n"
+      .leave
+    }
+
+    .if 0n20 < $arg1 {
+      .printf "Error: index is out of range (limited by 0n20).\n"
+      .leave
+    }
+
+    r $t0 = 1
+    .for (r $t1 = 1, $t2 = ${$arg1}; @$t1 <= @$t2; r $t1= @$t1 + 1) {
+      r $t0 = @$t0 * @$t1
+    }
+
+    ? @$t0
+  }
+}
+
+.pop /r /q
