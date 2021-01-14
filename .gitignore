@@ -1,0 +1,7 @@
+*
+!.gitignore
+!license
+!readme.txt
+!*.js
+!*.wds
+!*/
