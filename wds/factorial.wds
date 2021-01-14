@@ -1,4 +1,3 @@
-$$ factorial
 .push /r /q
 
 .block {
