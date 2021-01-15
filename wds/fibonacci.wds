@@ -2,12 +2,12 @@
 
 .catch {
   .if 0 == ${/d:$arg1} {
-    .printf "Usage: $$>a<fibonacci.wds <number>\n"
+    .echo "Usage: $$>a<${$arg0} <number>"
     .leave
   }
 
   .if 0n92 < ${$arg1} {
-    .printf "Error: index is out of range (limited by 0n92).\n"
+    .echo "Error: index is out of range (limited by 0n92)."
     .leave
   }
 
