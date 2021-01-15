@@ -1,0 +1,21 @@
+.push /r /q
+
+.catch {
+  .if 2 != @@c++(${/d:$arg1}+${/d:$arg2}+${/d:$arg3}) {
+    .echo "Usage: $$>a<${$arg0} <num1> <num2>"
+    .leave
+  }
+
+  r $t0 = ${$arg1}
+  r $t1 = ${$arg2}
+
+  .while (0 != @$t1) {
+    r $t2 = @$t0 % @$t1
+    r $t0 = @$t1
+    r $t1 = @$t2
+  }
+
+  ? $t0
+}
+
+.pop /r /q
