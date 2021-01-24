@@ -1,0 +1,1 @@
+as pipelist .shell -ci "~" dir \\.\pipe\\ | sed -n "s/.*\([[:digit:]][[:space:]][[:graph:]]*\)$/\1/p"
