@@ -1,0 +1,1 @@
+dx -g Debugger.Utility.Collections.FromListEntry(*(nt!_LIST_ENTRY *)&nt!HandleTableListHead, "nt!_HANDLE_TABLE", "HandleTableList").Where(x => x.QuotaProcess).Select(x => new {Source = x.QuotaProcess, Id = x.QuotaProcess->UniqueProcessId, Name = (char *)x.QuotaProcess->ImageFileName}),d
