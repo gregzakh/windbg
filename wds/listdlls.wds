@@ -1,0 +1,14 @@
+$$ retrieves modules (data) from PEB in the order they were loaded
+$$ don't forget about extension "!for_each_module" (.hh !for_each_module)
+
+.push /r /q
+
+.catch {
+  r? $t0 = &((nt!_PEB *)@$proc)->Ldr->InLoadOrderModuleList
+  .for (r? $t1 = @$t0->Flink; @$t1 != @$t0; r? $t1 = @$t1->Flink) {
+    r? $t2 = #CONTAINING_RECORD(@$t1, nt!_LDR_DATA_TABLE_ENTRY, InLoadOrderLinks)
+    .printf "Base: %.16I64x   Name: %msu\n", @@C++(@$t2->DllBase), @@C++(&@$t2->FullDllName)
+  }
+}
+
+.pop /r /q
