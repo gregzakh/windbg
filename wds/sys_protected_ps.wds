@@ -1,0 +1,1 @@
+dx -r2 @$cursession.Processes.Where(x => x.KernelObject.Protection.Level).Select(x => x.KernelObject).Select(x => new {Name = (&x)->SeAuditProcessCreationInfo.ImageFileName->Name, Level = x.Protection.Level}),d
