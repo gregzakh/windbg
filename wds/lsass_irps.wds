@@ -1,0 +1,1 @@
+dx -r3 @$cursession.Processes.Where(x => "lsass.exe" == x.Name).First().Threads.Select(x => new {Irp = Debugger.Utility.Collections.FromListEntry(x.KernelObject.IrpList, "nt!_IRP", "ThreadListEntry")}).Where(x => x.Irp.Count()).Select(x => x.Irp.Select(z => Debugger.Utility.Control.ExecuteCommand("!irp " + ((__int64)&z).ToDisplayString("x"))))
