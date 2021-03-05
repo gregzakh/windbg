@@ -10,7 +10,7 @@ const log = s => host.diagnostics.debugLog('${x}\n');
 
 function *GetListDlls() {
   if (host.namespace.Debugger.Sessions.First().Attributes.Target.IsKernelTarget) {
-    log('Incorrect debugger environment.')
+    log('Incorrect debugger environment.');
     return;
   }
 
