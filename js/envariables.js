@@ -27,10 +27,10 @@ function *GetVariables() {
   while (true) {
     let adr = pnt.add(ofs);
     let str = host.memory.readWideString(adr);
-    if (0 === str.length) break;
+    if (!str.length) break;
 
-    let val = str.match(/(=?[^=]+)/g);
-    yield(new Variable(adr, val[0], val[1].replace(/./, '')));
+    let val = str.match(/(.+)=(.+)/);
+    yield(new Variable(adr, val[1], val[2]));
 
     ofs += (str.length + 1) * 2;
   }
